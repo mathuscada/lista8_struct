@@ -42,13 +42,20 @@ const classStatistics = (turma) => {
         somaQuadrado += (aluno.mediaFinal - soma/turma.length)**2;
     });
     console.log("Desvio Padrão da turma: " + Math.sqrt(somaQuadrado/turma.length));
-    let reprovados = 0;
+    let reprovados = [];
     turma.forEach(aluno => {
         if(aluno.mediaFinal < 5) {
-            reprovados++;
+            reprovados.push(aluno.nome);
         }
     });
-    console.log("Reprovados: " + reprovados + " de " + turma.length + "\nAprovados: " + (turma.length - reprovados) + " de " + turma.length);
+    console.log("Reprovados: " + reprovados);
+    let aprovados = [];
+    turma.forEach(aluno => {
+        if(aluno.mediaFinal >= 5) {
+            aprovados.push(aluno.nome);
+        }
+    });
+    console.log("Aprovados: " + aprovados);
 }
 
 const mencao = ({mediaFinal}) => {
